@@ -29,8 +29,36 @@ export class EmpleadoListComponent implements OnInit {
       sexo: 'Masculino',
       salario: 45231,
     },
+    {
+      legajo: 4,
+      nombre: 'Aniela',
+      apellido: 'Antonieta',
+      sexo: 'Femenino',
+      salario: 45231,
+    },
+    {
+      legajo: 5,
+      nombre: 'Fernanda',
+      apellido: 'Sofia',
+      sexo: 'Femenino',
+      salario: 45231,
+    },
   ];
+
+  radioBSelected = 'Todos';
   constructor() {}
 
   ngOnInit(): void {}
+
+  obtenerTotalEmpleados(): number{
+    return this.listEmpleados.length;
+  }
+  obtenerFemEmpleado():number{
+    return this.listEmpleados.filter(list=>list.sexo === 'Femenino').length;
+  }
+  obtenerMascEmpleado():number{
+    return this.listEmpleados.filter(list=>list.sexo === 'Masculino').length;
+  }
+
+  
 }

@@ -3,33 +3,42 @@
     <div class="card-body">
       <div class="form-check form-check-inline">
         <input
+          [(ngModel)]="radioBSelected"
           class="form-check-input"
           type="radio"
           name="sexo"
           id="todos"
-          value="Masculino"
+          value="Todos"
         />
-        <label class="form-check-label" for="todos">Todos(5)</label>
+        <label class="form-check-label" for="todos"
+          >Todos({{ obtenerTotalEmpleados() }})</label
+        >
       </div>
       <div class="form-check form-check-inline">
         <input
+          [(ngModel)]="radioBSelected"
           class="form-check-input"
           type="radio"
           name="sexo"
           id="femenino"
           value="Femenino"
         />
-        <label class="form-check-label" for="femenino">Femenino(3)</label>
+        <label class="form-check-label" for="femenino"
+          >Femenino({{ obtenerFemEmpleado() }})</label
+        >
       </div>
       <div class="form-check form-check-inline">
         <input
+          [(ngModel)]="radioBSelected"
           class="form-check-input"
           type="radio"
           name="sexo"
           id="masculino"
           value="Masculino"
         />
-        <label class="form-check-label" for="masculino">Masculino(2)</label>
+        <label class="form-check-label" for="masculino"
+          >Masculino({{ obtenerMascEmpleado() }})</label
+        >
       </div>
     </div>
   </div>
@@ -46,13 +55,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let empleado of listEmpleados">
-            <td>{{empleado.legajo}}</td>
-            <td>{{empleado.nombre}}</td>
-            <td>{{empleado.apellido}}</td>
-            <td>{{empleado.sexo}}</td>
-            <td>{{empleado.salario | currency}}</td>
-          </tr>
+          <ng-container *ngFor="let empleado of listEmpleados">
+            <tr *ngIf="radioBSelected == 'Todos' || radioBSelected == empleado.sexo">
+              <td>{{ empleado.legajo }}</td>
+              <td>{{ empleado.nombre }}</td>
+              <td>{{ empleado.apellido }}</td>
+              <td>{{ empleado.sexo }}</td>
+              <td>{{ empleado.salario | currency }}</td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </div>
