@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-count-empleados',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountEmpleadosComponent implements OnInit {
 
-  constructor() { }
+  @Input() todos:number;
+  @Input() fem:number;
+  @Input() masc:number;
+  @Output() countRadioButtonChange = new EventEmitter<string>();
+  radioBSelected = 'Todos';
+  constructor() {
+    this.todos = 0;
+    this.fem = 0;
+    this.masc = 0;
+  }
 
   ngOnInit(): void {
+   
+  }
+
+  radioChange():void{
+    this.countRadioButtonChange.emit(this.radioBSelected);
   }
 
 }

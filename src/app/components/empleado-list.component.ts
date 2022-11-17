@@ -50,15 +50,18 @@ export class EmpleadoListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  obtenerTotalEmpleados(): number{
+  obtenerTotalEmpleados(): number {
     return this.listEmpleados.length;
   }
-  obtenerFemEmpleado():number{
-    return this.listEmpleados.filter(list=>list.sexo === 'Femenino').length;
+  obtenerFemEmpleado(): number {
+    return this.listEmpleados.filter((list) => list.sexo === 'Femenino').length;
   }
-  obtenerMascEmpleado():number{
-    return this.listEmpleados.filter(list=>list.sexo === 'Masculino').length;
+  obtenerMascEmpleado(): number {
+    return this.listEmpleados.filter((list) => list.sexo === 'Masculino')
+      .length;
   }
 
-  
+  empleadoEvent(radioB: string): void {
+    this.radioBSelected = radioB;
+  }
 }
